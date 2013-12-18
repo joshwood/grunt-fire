@@ -1,4 +1,4 @@
 grunt-fire
 ==========
 
-getting feet wet - simple grunt file and a firebase/angular client 
+Simple grunt file and a firebase/angular client 
