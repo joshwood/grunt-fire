@@ -10,19 +10,6 @@ module.exports = function(grunt) {
           base: 'app',
           livereload: true
       },
-      proxies: [
-          {
-              context: '/service',
-              host: 'remote.host.com',
-              port: 8080,
-              https: false,
-              changeOrigin: false,
-              xforward: false,
-              rewrite: {
-                '^/service' : '/somepath/service'
-              }
-          }
-      ],
       livereload: {
           options: {
               middleware: function (connect, options) {
@@ -54,7 +41,7 @@ module.exports = function(grunt) {
         // or an Array of String for multiple entries
         // You can use globing patterns like `css/**/*.css`
         // See https://github.com/gruntjs/grunt-contrib-watch#files
-        files: '**/*.*',
+        files: 'app/**/*.*',
         options: {
           livereload: true
         }
