@@ -1,0 +1,43 @@
+<html ng-app="agile">
+
+<head>
+
+</head>
+
+<body>
+	<h1>Hello - grunt</h1>
+
+	<div ng-controller="UserController">
+		<label>First Name</label>
+		<input type="text" ng-model="firstName">
+		<label>Last Name</label>
+		<input type="text" ng-model="lastName">
+		<input type="button" ng-click="addUser()" value="save"/>
+	</div>
+
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+<script src="//cdn.firebase.com/v0/firebase.js"></script>
+<script src="//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+
+<script type="text/javascript">
+ 	
+	var agile = angular.module('agile', ['firebase']);
+
+	agile.controller('UserController', ['$scope', '$firebase', function($scope, $firebase) {
+
+		var ref = new Firebase('https://joshwood.firebaseio.com/users');
+
+		$scope.users = $firebase(ref.limit(15));
+
+		$scope.addUser = function() {
+			$scope.users.$add({
+				firstName: $scope.firstName, lastName: $scope.lastName
+			});
+		}
+
+	}]);
+
+</script>
+</html>
